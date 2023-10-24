@@ -8,7 +8,7 @@ interface NotesDao {
     @get:Query("SELECT * FROM notes ORDER BY id DESC")
     val allNotes:List<Notes>
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertNote(note: Notes)
+    suspend fun insertNote(note: Notes)
     @Delete
-    fun deleteNotess(note: Notes)
+    suspend fun deleteNotes(note: Notes)
 }

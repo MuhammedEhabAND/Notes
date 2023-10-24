@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="inc.moe.notesapp.HomeFragment"
+        android:name="inc.moe.notesapp.home.view.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
 </navigation>
