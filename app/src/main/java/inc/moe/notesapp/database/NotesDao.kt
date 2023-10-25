@@ -5,8 +5,8 @@ import inc.moe.notesapp.model.Notes
 
 @Dao
 interface NotesDao {
-    @get:Query("SELECT * FROM notes ORDER BY id DESC")
-    val allNotes:List<Notes>
+    @Query("SELECT * FROM notes ORDER BY id DESC")
+    suspend fun getAllNotes():List<Notes>
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNote(note: Notes)
     @Delete

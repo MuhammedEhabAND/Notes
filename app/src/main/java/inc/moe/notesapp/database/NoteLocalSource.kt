@@ -38,8 +38,10 @@ class NoteLocalSource private constructor(var context: Context) : INoteLocalSour
         }
     }
 
-    override fun getAllNotes():List<Notes> {
-       return notesDao.allNotes
+    override suspend fun getAllNotes():List<Notes> {
+        val notes: List<Notes> = notesDao.getAllNotes()
+        return notes
+
     }
 
 }

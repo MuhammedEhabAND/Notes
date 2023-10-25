@@ -24,7 +24,7 @@ class Repo private constructor(private val noteLocalSource: NoteLocalSource) :IR
        noteLocalSource.deleteNote(note)
     }
 
-    override fun getAllNotes(): List<Notes> {
+    override suspend fun getAllNotes(): List<Notes> {
        return noteLocalSource.getAllNotes()
      }
 }

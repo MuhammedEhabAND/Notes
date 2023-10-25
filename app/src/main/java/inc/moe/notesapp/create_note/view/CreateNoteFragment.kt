@@ -15,6 +15,8 @@ import inc.moe.notesapp.database.NoteDatabase
 import inc.moe.notesapp.database.NoteLocalSource
 import inc.moe.notesapp.model.Notes
 import inc.moe.notesapp.model.Repo
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class CreateNoteFragment : Fragment() , ICreateNoteView {
@@ -57,11 +59,18 @@ class CreateNoteFragment : Fragment() , ICreateNoteView {
 
     private fun createNewNote() {
         if(checkInput()){
+            val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
+
+            var currentDate = sdf.format(Date())
+
+
            var note = Notes(
                title = noteTitle.text.toString(),
                subTitle = subNoteTitle.text.toString(),
-               noteText = noteBody.text.toString()
-           )
+               noteText = noteBody.text.toString(),
+               dateTime =currentDate
+
+            )
             createNotePresenter.createNewNote(note)
 
         }

@@ -39,7 +39,8 @@
         app:layout_constraintTop_toBottomOf="@id/search_view"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/rv"/>
+        android:id="@+id/rv"
+        tools:listitem="@layout/item_rv_notes"/>
     <LinearLayout
         android:id="@+id/linear"
         android:layout_width="match_parent"
