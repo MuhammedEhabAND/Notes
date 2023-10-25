@@ -9,6 +9,18 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="inc.moe.notesapp.home.view.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_createNoteFragment"
+            app:destination="@id/createNoteFragment" />
+        <argument
+            android:name="note"
+            app:argType="inc.moe.notesapp.model.Notes"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/createNoteFragment"
+        android:name="inc.moe.notesapp.create_note.view.CreateNoteFragment"
+        android:label="Create Note " />
 </navigation>

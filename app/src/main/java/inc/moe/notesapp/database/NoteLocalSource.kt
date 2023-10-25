@@ -1,27 +1,30 @@
 package inc.moe.notesapp.database
 
 import android.content.Context
-import android.provider.Settings.Global
-import android.util.Log
 import inc.moe.notesapp.model.Notes
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class NoteLocalSource (context:Context) : INoteLocalSource {
+class NoteLocalSource private constructor(var context: Context) : INoteLocalSource {
 
-    private val instance: NoteLocalSource? = null
-    private lateinit var noteDatabase: NoteDatabase
-    private lateinit var notesDao: NotesDao
+    private var notesDao: NotesDao
+
     init {
-        noteDatabase= NoteDatabase.getInstance(context)
+        val noteDatabase = NoteDatabase.getInstance(context)
         notesDao = noteDatabase.noteDao()
-        }
-
-    fun getInstance(context: Context):NoteLocalSource {
-        return if (instance == null) NoteLocalSource(context) else instance
     }
 
+    companion object {
+        private var instance: NoteLocalSource? = null
+
+        fun getInstance(context: Context): NoteLocalSource {
+            if (instance == null) {
+                instance = NoteLocalSource(context)
+            }
+            return instance!!
+        }
+    }
 
     override fun insertNote(note: Notes) {
         GlobalScope.launch(Dispatchers.IO) {
@@ -35,7 +38,8 @@ class NoteLocalSource (context:Context) : INoteLocalSource {
         }
     }
 
-    override fun getAllNotes(notes: List<Notes>) {
-        GlobalScope.launch {  }
+    override fun getAllNotes():List<Notes> {
+       return notesDao.allNotes
     }
+
 }
