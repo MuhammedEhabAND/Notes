@@ -13,7 +13,11 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_createNoteFragment"
-            app:destination="@id/createNoteFragment" />
+            app:destination="@id/createNoteFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
         <argument
             android:name="note"
             app:argType="inc.moe.notesapp.model.Notes"
